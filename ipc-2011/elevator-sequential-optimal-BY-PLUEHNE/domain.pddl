@@ -9,12 +9,12 @@
 (:predicates 
 	(passenger-at ?person - passenger ?floor - count)   ; faz referencia/seta qual andar o passageiro esta
 	(boarded ?person - passenger ?lift - elevator)      ; coloca uma pessoa p em um elevador lift
-	(lift-at ?lift - elevator ?floor - count)           ; nome ruim, lift-at server para movermos os elevador entre os andares
+	(lift-at ?lift - elevator ?floor - count)           ; nome ruim, lift-at serve para movermos os elevador entre os andares
 	(reachable-floor ?lift - elevator ?floor - count)   ; marca em quais andares cada elevador pode ir
 	(above ?floor1 - count ?floor2 - count)             ; marca se n1 está abaixo de n2
 	(passengers ?lift - elevator ?n - count)            ; quantos passageiros tem no elevador, por isso comparamos (next ?n1 ?n2) antes de inserir no elevador, estamos atualizando a quantidade de passageiros
 	(can-hold ?lift - elevator ?n - count)              ; quantos passageiros um elevador pode levar
-                                                        ; em instace 1, (can_hold slow0 n2) (can_hold ?slow1 n2) can_hold ? ?fast1 n3)
+                                                            ; em instace 1, (can_hold slow0 n2) (can_hold ?slow1 n2) can_hold ? ?fast1 n3)
 	(next ?n1 - count ?n2 - count)                      ; determina a ordem nos numeros, de n1 até nn
 )
 
