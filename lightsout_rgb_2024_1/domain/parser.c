@@ -110,7 +110,7 @@ int main(void) {
 	//printf("MADAGASCAR...\n");
     // system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > madagascar.plan");
 	//printf("DOWNWARD...\n");
-    system("/home/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl");
+    system("/home/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
 	system("sed -E 's/^\\(click c([0-9]+)-([0-9]+).*$/\\(click \\1 \\2\\);/g' sas_plan > out");
 
 	FILE *file = fopen("out", "r");

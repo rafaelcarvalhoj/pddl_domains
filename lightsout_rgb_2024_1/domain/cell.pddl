@@ -25,10 +25,10 @@
         :effect (and
                     ; COLOR
 					(when (not (is_edge ?c))
-                    (and(when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
-                    (when (is_red ?c) (and (not (is_red ?c)) (is_green ?c)))
-                    (when (is_green ?c) (and (not (is_green ?c)) (is_blue ?c)))
-                    (when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))))
+						(and(when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
+						(when (is_red ?c) (and (not (is_red ?c)) (is_green ?c)))
+						(when (is_green ?c) (and (not (is_green ?c)) (is_blue ?c)))
+						(when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))))
                     ; VERTICAL
                     (forall (?cc - cell) 
 							(when
