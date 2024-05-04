@@ -1,18 +1,30 @@
-(click c0-0)
-(click c0-0)
-(click c0-3)
-(click c0-3)
-(click c0-0)
-(click c0-1)
-(click c0-1)
-(click c2-3)
-(click c2-0)
-(click c0-1)
-(click c0-1)
-(click c0-3)
-(click c0-3)
-(click c2-3)
-(click c2-0)
-(click c2-0)
-(click c2-0)
-; cost = 17 (unit cost)
+Madagascar 0.99999 17/01/2022 17:33:57 amd64 1-core
+Options: file:domain.pddl file:problem.pddl
+Domain: lightsout_rgb
+Problem: luz
+Parser: 16 ground actions and 652 state variables
+Invariants: 0 1 2  0.00 secs
+Goal: conjunctive
+Simplified: 16 ground actions and 64 state variables
+Actions: conjunctive
+Disabling graph %: 10 20 30 40 50 60 70 80 90 100 0.00 secs (max SCC size 16)
+Plan type: E-step
+Heuristic: VSIDS
+				Allocated 32 MB permanent (total 124 MB)
+Horizon 0: 64 variables
+0 UNSAT (0 decisions 0 conflicts)
+Horizon 5: 5324 variables
+SAT (695 decisions 0 conflicts)
+PLAN FOUND: 5 steps
+0 : (click c0-0)
+1 : (click c0-0)
+2 : (click c2-3)
+3 : (click c0-0)
+4 : (click c2-3)
+5 actions in the plan.
+total time 0.01 preprocess 0.00 
+total size 353.000 MB
+max. learned clause length 0
+t val conflicts decisions
+0 0 0 0
+5 1 0 695
