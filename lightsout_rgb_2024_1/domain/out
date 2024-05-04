@@ -1,21 +1,18 @@
 (click 0 0);
 (click 0 0);
+(click 0 3);
+(click 0 3);
 (click 0 0);
-(click 2 2);
-(click 1 0);
-(click 1 0);
-(click 1 0);
-(click 0 0);
-(click 2 2);
-(click 0 0);
-(click 0 2);
-(click 0 2);
-(click 0 2);
 (click 0 1);
 (click 0 1);
+(click 2 3);
+(click 2 0);
 (click 0 1);
-(click 2 1);
-(click 0 0);
-(click 0 0);
-(click 0 0);
-; cost = 20 (unit cost)
+(click 0 1);
+(click 0 3);
+(click 0 3);
+(click 2 3);
+(click 2 0);
+(click 2 0);
+(click 2 0);
+; cost = 17 (unit cost)
