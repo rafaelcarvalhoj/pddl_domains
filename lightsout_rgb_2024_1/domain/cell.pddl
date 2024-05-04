@@ -1,5 +1,5 @@
 (define (domain lightsout_rgb)
-	(:requirements :equality :disjunctive-preconditions)
+;	(:requirements :equality :disjunctive-preconditions)
     (:types line column cell - object)
     (:predicates
         ; ========CORES========
@@ -19,15 +19,16 @@
 		(same_column ?c ?cc - cell)
 		(same_line ?c ?cc - cell)
     )
-    (:action click_default
+    (:action click
         :parameters (?c - cell)
-        :precondition (or (is_default ?c) (is_edgebroken ?c))
+        :precondition (and )
         :effect (and
                     ; COLOR
-                    (when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
+					(when (not (is_edge ?c))
+                    (and(when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
                     (when (is_red ?c) (and (not (is_red ?c)) (is_green ?c)))
                     (when (is_green ?c) (and (not (is_green ?c)) (is_blue ?c)))
-                    (when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))
+                    (when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))))
                     ; VERTICAL
                     (forall (?cc - cell) 
 							(when
@@ -39,69 +40,6 @@
 									(when (is_red ?cc) (and (not (is_red ?cc)) (is_green ?cc)))
 									(when (is_green ?cc) (and (not (is_green ?cc)) (is_blue ?cc)))
 									(when (is_blue ?cc) (and (not (is_blue ?cc)) (is_off ?cc))))))
-                    ; HORIZONTAL
-                    (forall (?cc - cell) 
-							(when
-                            	(and (not(= ?c ?cc)) (same_line ?c ?cc) (not (is_hbroken ?cc)) (not (is_edgebroken ?cc)))
-                            	(and
-									(when (is_off ?cc) (and (not (is_off ?cc)) (is_red ?cc)))
-									(when (is_red ?cc) (and (not (is_red ?cc)) (is_green ?cc)))
-									(when (is_green ?cc) (and (not (is_green ?cc)) (is_blue ?cc)))
-									(when (is_blue ?cc) (and (not (is_blue ?cc)) (is_off ?cc)))))))
-	) 
-    (:action click_edge
-        :parameters (?c - cell)
-        :precondition (and (is_edge ?c))
-        :effect (and
-                    ; VERTICAL
-                    (forall (?cc - cell) 
-							(when
-								; PRE
-								(and (not(= ?c ?cc)) (same_column ?c ?cc) (not (is_vbroken ?cc)) (not (is_edgebroken ?cc)))
-								; EFFECT
-								(and 
-									(when (is_off ?cc) (and (not (is_off ?cc)) (is_red ?cc)))
-									(when (is_red ?cc) (and (not (is_red ?cc)) (is_green ?cc)))
-									(when (is_green ?cc) (and (not (is_green ?cc)) (is_blue ?cc)))
-									(when (is_blue ?cc) (and (not (is_blue ?cc)) (is_off ?cc))))))
-                    ; HORIZONTAL
-                    (forall (?cc - cell) 
-							(when
-                            	(and (not(= ?c ?cc)) (same_line ?c ?cc) (not (is_hbroken ?cc)) (not (is_edgebroken ?cc)))
-                            	(and
-									(when (is_off ?cc) (and (not (is_off ?cc)) (is_red ?cc)))
-									(when (is_red ?cc) (and (not (is_red ?cc)) (is_green ?cc)))
-									(when (is_green ?cc) (and (not (is_green ?cc)) (is_blue ?cc)))
-									(when (is_blue ?cc) (and (not (is_blue ?cc)) (is_off ?cc)))))))
-	) 
-    (:action click_hbroken
-        :parameters (?c - cell)
-        :precondition (and (is_hbroken ?c))
-        :effect (and
-                    ; COLOR
-                    (when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
-                    (when (is_red ?c) (and (not (is_red ?c)) (is_green ?c)))
-                    (when (is_green ?c) (and (not (is_green ?c)) (is_blue ?c)))
-                    (when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))
-                    ; VERTICAL
-                    (forall (?cc - cell) 
-							(when
-                            	(and (not(= ?c ?cc)) (same_column ?c ?cc) (not (is_vbroken ?cc)) (not (is_edgebroken ?cc)))
-                            	(and
-									(when (is_off ?cc) (and (not (is_off ?cc)) (is_red ?cc)))
-									(when (is_red ?cc) (and (not (is_red ?cc)) (is_green ?cc)))
-									(when (is_green ?cc) (and (not (is_green ?cc)) (is_blue ?cc)))
-									(when (is_blue ?cc) (and (not (is_blue ?cc)) (is_off ?cc)))))))
-	) 
-    (:action click_vbroken
-        :parameters (?c - cell)
-        :precondition (and (is_vbroken ?c))
-        :effect (and
-                    ; COLOR
-                    (when (is_off ?c) (and (not (is_off ?c)) (is_red ?c)))
-                    (when (is_red ?c) (and (not (is_red ?c)) (is_green ?c)))
-                    (when (is_green ?c) (and (not (is_green ?c)) (is_blue ?c)))
-                    (when (is_blue ?c) (and (not (is_blue ?c)) (is_off ?c)))
                     ; HORIZONTAL
                     (forall (?cc - cell) 
 							(when
