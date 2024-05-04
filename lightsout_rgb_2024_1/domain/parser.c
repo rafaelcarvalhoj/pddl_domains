@@ -110,16 +110,24 @@ int main(void) {
 	//printf("MADAGASCAR...\n");
     // system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > madagascar.plan");
 	//printf("DOWNWARD...\n");
-    system("/home/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
-	system("sed -E 's/^\\(click c([0-9]+)-([0-9]+).*$/\\(click \\1 \\2\\);/g' sas_plan > out");
-
-	FILE *file = fopen("out", "r");
-    char line[100];
-	while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "; cost") == NULL) {
-            printf("%s", line);
+    system("/tmp/dir/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
+    
+    FILE *sas_plan;
+    if ((sas_plan = fopen("sas_plan", "r")) != NULL) {
+        system("sed -E 's/^\\(click c([0-9]+)-([0-9]+).*$/\\(click \\1 \\2\\);/g' sas_plan > out");
+        FILE *file = fopen("out", "r");
+        char line[100];
+        while(fgets(line, sizeof(line), file)) {
+            if (strstr(line, "; cost") == NULL) {
+                printf("%s", line);
+            }
         }
+        fclose(file);
+        fclose(sas_plan);
+    } else {
+	while(1){
+	    // sem wa dessa vez
+	}
     }
-    fclose(file);
 	return 0;
 }
