@@ -8,19 +8,11 @@ int main(void) {
 	while (scanf(" %s", matrix[p++]) == 1);
 	FILE *problem = fopen("problem.pddl", "w"), *domain = fopen("domain.pddl", "w");
 	fprintf(problem, "(define (problem luz)\n\t(:domain lightsout_rgb)\n\t(:objects");
-    //for (int i = 0; i < p-1; i++){
-	//	fprintf(problem, " l%d", i);
-	//}
-	//fprintf(problem, " - line");
-	
 	int max_column_size = 0;
     for (int i = 0; i < p || matrix[i][0] != 0; i++){
 		int isize = strlen(matrix[i])/2;
 		if(isize > max_column_size) max_column_size = isize;
 	}
-	//for(int i = 0 ; i < max_column_size; i++) fprintf(problem, " cl%d", i);
-	//fprintf(problem, " - column");
-
     for (int i = 0; i < p || matrix[i][0] != 0; i++)
 		for(int j = 0, m = 0; matrix[i][j] != '\0' ; j+=2)
 			fprintf(problem, " c%d-%d", i, m++);
@@ -49,9 +41,10 @@ int main(void) {
 
 			// same line
 			for(int j  = 1, n = 0; matrix[i][j] != '\0' ; j+=2, n++)
-		        fprintf(problem, "\t\t(same_line c%d-%d c%d-%d)\n", i, m, i, n);
+				if(m!=n)
+		        	fprintf(problem, "\t\t(same_line c%d-%d c%d-%d)\n", i, m, i, n);
 			for(int j = 0 ; j < max_column_size; j++)
-				if(matrix[j][m] != 0)
+				if(matrix[j][m] != 0 && i!=j)
 	        		fprintf(problem, "\t\t(same_column c%d-%d c%d-%d)\n", i, m, j, m);
         	fprintf(problem, "\n");
 		} 
@@ -108,9 +101,8 @@ int main(void) {
 	fclose(domain), 
 	fclose(problem);
 	//printf("MADAGASCAR...\n");
-    system("/etc/dir/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
-	//printf("DOWNWARD...\n");
-    //system("/home/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
+    system("/tmp/dir/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
+    //system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
 	FILE *sas_plan;
     if ((sas_plan = fopen("sas_plan", "r")) != NULL) {
 		system("sed -nE 's/^[0-9]{0,3} : \\(click c([0-9]{1,2})-([0-9]{1,2})\\)/\\(click \\1 \\2\\);/p' sas_plan > out");

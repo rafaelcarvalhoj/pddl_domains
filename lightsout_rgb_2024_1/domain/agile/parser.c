@@ -110,7 +110,7 @@ int main(void) {
 	//printf("MADAGASCAR...\n");
     // system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > madagascar.plan");
 	//printf("DOWNWARD...\n");
-    system("/tmp/dir/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
+    system("/home/software/planners/downward/fast-downward.py --alias lama-first domain.pddl problem.pddl > /dev/null");
     
     FILE *sas_plan;
     if ((sas_plan = fopen("sas_plan", "r")) != NULL) {

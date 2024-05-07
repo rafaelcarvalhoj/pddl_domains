@@ -22,7 +22,7 @@ PLAN FOUND: 5 steps
 3 : (click c0-0)
 4 : (click c2-3)
 5 actions in the plan.
-total time 0.01 preprocess 0.00 
+total time 0.00 preprocess 0.00 
 total size 353.000 MB
 max. learned clause length 0
 t val conflicts decisions
