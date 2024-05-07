@@ -99,7 +99,8 @@ int main(void) {
 	fclose(domain), 
 	fclose(problem);
     
-	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-sat-lama-2011 domain.pddl problem.pddl > /dev/null");
+	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-sat-lama-2011 --search-time-limit 170 domain.pddl problem.pddl > /dev/null");
+	//system("/home/software/planners/downward/fast-downward.py --alias seq-sat-lama-2011 --search-time-limit 170 domain.pddl problem.pddl > /dev/null");
     
     FILE *sas_plan;
 	int i = 1;
@@ -126,9 +127,7 @@ int main(void) {
 		fclose(file);
 		fclose(sas_plan);
 	} else {
-		while(1){
-			// sem wa dessa vez
-		}
+		exit(200);
 	}
 	return 0;
 }
