@@ -101,8 +101,8 @@ int main(void) {
 	fclose(domain), 
 	fclose(problem);
 	//printf("MADAGASCAR...\n");
-    system("/tmp/dir/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
-    //system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
+    //system("/tmp/dir/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
+    system("/home/software/planners/madagascar/M -Q domain.pddl problem.pddl > sas_plan");
 	FILE *sas_plan;
     if ((sas_plan = fopen("sas_plan", "r")) != NULL) {
 		system("sed -nE 's/^[0-9]{0,3} : \\(click c([0-9]{1,2})-([0-9]{1,2})\\)/\\(click \\1 \\2\\);/p' sas_plan > out");
