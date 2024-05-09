@@ -100,8 +100,8 @@ int main(void) {
     fprintf(domain, ")");
 	fclose(domain), 
 	fclose(problem);
-    //system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-opt-lmcut domain.pddl problem.pddl > /dev/null");
-    system("/home/software/planners/downward/fast-downward.py --alias seq-opt-fdss-1 --search-time-limit 179 domain.pddl problem.pddl > /dev/null");
+    system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-opt-lmcut domain.pddl problem.pddl > /dev/null");
+    //system("/home/software/planners/downward/fast-downward.py --alias seq-opt-fdss-1 --search-time-limit 179 domain.pddl problem.pddl > /dev/null");
     
     FILE *sas_plan;
     if ((sas_plan = fopen("sas_plan", "r")) != NULL) {
