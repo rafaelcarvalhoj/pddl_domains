@@ -127,8 +127,8 @@ int main(void) {
     fprintf(domain, ")");
 	fclose(domain), fclose(problem);
     
-	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-sat-lama-2011 --search-time-limit 179 domain.pddl problem.pddl > /dev/null");
-	//system("/home/software/planners/downward/fast-downward.py --alias seq-sat-lama-2011 --search-time-limit 179 domain.pddl problem.pddl > /dev/null");
+	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-sat-fdss-2018 --overall-time-limit 179s domain.pddl problem.pddl > /dev/null");
+	//system("/home/software/planners/downward/fast-downward.py --alias seq-sat-fdss-2018 --overall-time-limit 179s domain.pddl problem.pddl > /dev/null");
 
     FILE *sas_plan;
 	int i = 1;
