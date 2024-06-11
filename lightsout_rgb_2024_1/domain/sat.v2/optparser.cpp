@@ -127,7 +127,7 @@ int main(void) {
     fprintf(domain, ")");
 	fclose(domain), fclose(problem);
     
-	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-opt-fdss-2 --overall-time-limit 179s domain.pddl problem.pddl > /dev/null");
+	system("/tmp/dir/software/planners/downward/fast-downward.py --alias seq-opt-fdss-1 --overall-time-limit 179s domain.pddl problem.pddl > /dev/null");
 	//system("/home/software/planners/downward/fast-downward.py --alias seq-opt-merge-and-shrink --overall-time-limit 179s domain.pddl problem.pddl > /dev/null");
 
     FILE *sas_plan;
